@@ -1,9 +1,11 @@
 from setuptools import setup, find_packages
 
+exec(open('meshgpt_pytorch/version.py').read())
+
 setup(
   name = 'meshgpt-pytorch',
   packages = find_packages(exclude=[]),
-  version = '0.0.1',
+  version = __version__,
   license='MIT',
   description = 'MeshGPT Pytorch',
   author = 'Phil Wang',
@@ -18,16 +20,33 @@ setup(
     'mesh generation'
   ],
   install_requires=[
-    'accelerate',
+    'accelerate>=0.25.0',
     'beartype',
-    'classifier-free-guidance-pytorch>=0.1.4',
-    'einops>=0.7.0',
-    'ema-pytorch',
-    'torch>=2.0',
+    "huggingface_hub>=0.21.4",
+    'classifier-free-guidance-pytorch>=0.6.10',
+    'einops>=0.8.0',
+    'einx[torch]>=0.3.0',
+    'ema-pytorch>=0.5.1',
+    'environs',
+    'gateloop-transformer>=0.2.2',
+    'jaxtyping',
+    'local-attention>=1.9.11',
+    'numpy',
+    'pytorch-custom-utils>=0.0.9',
+    'rotary-embedding-torch>=0.6.4',
+    'sentencepiece',
+    'taylor-series-linear-attention==0.1.11',
+    'torch>=2.1',
     'torch_geometric',
-    'torchtyping',
-    'vector-quantize-pytorch>=1.11.8',
-    'x-transformers>=1.26.0'
+    'tqdm',
+    'vector-quantize-pytorch>=1.14.22',
+    'x-transformers>=1.30.19,<1.31',
+  ],
+  setup_requires=[
+    'pytest-runner',
+  ],
+  tests_require=[
+    'pytest'
   ],
   classifiers=[
     'Development Status :: 4 - Beta',
